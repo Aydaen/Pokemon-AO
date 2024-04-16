@@ -1,10 +1,10 @@
-package it.alten.PokemonAO;
+package it.alten.pokemonao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PokemonAoApplicationTests {
+class PokemonEntityAoApplicationTests {
 
 	@Test
 	void contextLoads() {
