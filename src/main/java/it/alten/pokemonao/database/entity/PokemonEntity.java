@@ -5,9 +5,8 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pokemon", schema = "pokemon_schema")
@@ -33,16 +32,16 @@ public class PokemonEntity {
     @Column(name = "trainer_name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
     private String trainerName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
-    private TypeEntity typeEntity;
+    private TypeEntity type;
 
     @ManyToMany
     @JoinTable(
             name = "pokemon_move",
             joinColumns = @JoinColumn(name = "pokemon_id"),
             inverseJoinColumns = @JoinColumn(name = "move_id"))
-    private Set<MoveEntity> moveEntities = new HashSet<>();
+    private List<MoveEntity> moves = new ArrayList<>();
 
 }

@@ -5,8 +5,8 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "move", schema = "pokemon_schema")
@@ -26,10 +26,10 @@ public class MoveEntity {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
-    private TypeEntity typeEntity;
+    private TypeEntity type;
 
-    @ManyToMany(mappedBy = "moveEntities")
-    private Set<PokemonEntity> pokemonEntity = new HashSet<>();
+    @ManyToMany(mappedBy = "moves")
+    private List<PokemonEntity> pokemon = new ArrayList<>();
 
 
 }
