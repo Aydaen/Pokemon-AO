@@ -1,6 +1,9 @@
 package it.alten.pokemonao.database.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -9,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "move", schema = "pokemon_schema")
+@Data
 public class MoveEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +25,7 @@ public class MoveEntity {
     @Column(name = "power", nullable = false)
     private Integer power;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
     private TypeEntity typeEntity;
