@@ -1,14 +1,16 @@
 package it.alten.pokemonao.database.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "move", schema = "pokemon_schema")
+@Data
 public class MoveEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

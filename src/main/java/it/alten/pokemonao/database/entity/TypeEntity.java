@@ -1,12 +1,14 @@
 package it.alten.pokemonao.database.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "type", schema = "pokemon_schema")
+@Data
 public class TypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

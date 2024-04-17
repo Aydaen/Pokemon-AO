@@ -1,12 +1,8 @@
 package it.alten.pokemonao.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class TypeModel {
     private Integer id;
     private String name;
