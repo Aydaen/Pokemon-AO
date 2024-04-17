@@ -2,7 +2,9 @@ package it.alten.pokemonao.controllers;
 
 import it.alten.pokemonao.dtos.PokemonDTO;
 import it.alten.pokemonao.services.impl.PokemonService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +23,13 @@ public class PokemonController {
     }
 
     @GetMapping("/{id}")
-    // TODO not found entity exception
     public @ResponseBody ResponseEntity<PokemonDTO> getById(@PathVariable(name = "id") Integer id) {
-        PokemonDTO pokemon = pokemonService.getById(id);
-        return ResponseEntity.ok(pokemon);
+        try {
+            PokemonDTO response = pokemonService.getById(id);
+            return ResponseEntity.ok(response);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
 }
