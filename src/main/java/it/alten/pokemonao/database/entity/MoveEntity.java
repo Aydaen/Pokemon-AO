@@ -26,7 +26,7 @@ public class MoveEntity {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
-    private TypeEntity typeEntity;
+    private TypeEntity type;
 
     @ManyToMany(mappedBy = "moves")
     private List<PokemonEntity> pokemon = new ArrayList<>();

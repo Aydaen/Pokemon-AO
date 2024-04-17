@@ -21,12 +21,10 @@ public class TypeEntity {
     @Column(name = "icon_url", length = Integer.MAX_VALUE)
     private String iconUrl;
 
-    @OneToMany(mappedBy = "typeEntity")
-    private Set<MoveEntity> moveEntities = new HashSet<>();
+    @OneToMany(mappedBy = "type")
     private List<MoveEntity> moves = new ArrayList<>();
 
-    @OneToMany(mappedBy = "typeEntity")
-    private Set<PokemonEntity> pokemonEntities = new HashSet<>();
+    @OneToMany(mappedBy = "type")
     private List<PokemonEntity> pokemon = new ArrayList<>();
 
 }

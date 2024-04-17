@@ -6,7 +6,9 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "pokemon", schema = "pokemon_schema")
@@ -35,7 +37,7 @@ public class PokemonEntity {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
-    private TypeEntity typeEntity;
+    private TypeEntity type;
 
     @ManyToMany
     @JoinTable(
