@@ -23,8 +23,10 @@ public class TypeEntity {
 
     @OneToMany(mappedBy = "typeEntity")
     private Set<MoveEntity> moveEntities = new HashSet<>();
+    private List<MoveEntity> moves = new ArrayList<>();
 
     @OneToMany(mappedBy = "typeEntity")
     private Set<PokemonEntity> pokemonEntities = new HashSet<>();
+    private List<PokemonEntity> pokemon = new ArrayList<>();
 
 }

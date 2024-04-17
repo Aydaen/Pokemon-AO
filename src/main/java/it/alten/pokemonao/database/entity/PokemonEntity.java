@@ -42,6 +42,6 @@ public class PokemonEntity {
             name = "pokemon_move",
             joinColumns = @JoinColumn(name = "pokemon_id"),
             inverseJoinColumns = @JoinColumn(name = "move_id"))
-    private Set<MoveEntity> moveEntities = new HashSet<>();
+    private List<MoveEntity> moves = new ArrayList<>();
 
 }

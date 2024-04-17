@@ -28,8 +28,8 @@ public class MoveEntity {
     @JoinColumn(name = "type_id")
     private TypeEntity typeEntity;
 
-    @ManyToMany(mappedBy = "moveEntities")
-    private Set<PokemonEntity> pokemonEntity = new HashSet<>();
+    @ManyToMany(mappedBy = "moves")
+    private List<PokemonEntity> pokemon = new ArrayList<>();
 
 
 }
