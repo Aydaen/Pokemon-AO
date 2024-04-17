@@ -1,6 +1,6 @@
 package it.alten.pokemonao.models;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 public class MoveModel {
