@@ -32,7 +32,7 @@ public class PokemonEntity {
     @Column(name = "trainer_name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
     private String trainerName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
     private TypeEntity typeEntity;

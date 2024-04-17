@@ -23,7 +23,7 @@ public class MoveEntity {
     @Column(name = "power", nullable = false)
     private Integer power;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")
     private TypeEntity typeEntity;
