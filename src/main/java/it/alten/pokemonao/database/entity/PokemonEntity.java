@@ -1,6 +1,7 @@
 package it.alten.pokemonao.database.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "pokemon", schema = "pokemon_schema")
+@Data
 public class PokemonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
