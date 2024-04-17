@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class TypeModel {
-    private long id;
+    private Integer id;
     private String name;
     private String icon;
 }

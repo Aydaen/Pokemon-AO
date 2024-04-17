@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class PokemonModel {
-    private long id;
+    private Integer id;
     private String name;
     private String sprite;
     private int currentHp;

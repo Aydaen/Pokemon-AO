@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class MoveModel {
-    private long id;
+    private Integer id;
     private String name;
     private TypeModel type;
     private int power;

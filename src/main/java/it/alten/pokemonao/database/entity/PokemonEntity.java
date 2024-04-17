@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "pokemon", schema = "pokemon_schema")
-public class PokemonEntity {
+public class PokemonModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
