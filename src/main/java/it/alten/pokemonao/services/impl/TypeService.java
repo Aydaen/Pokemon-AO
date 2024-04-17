@@ -2,7 +2,7 @@ package it.alten.pokemonao.services.impl;
 
 import it.alten.pokemonao.database.entity.TypeEntity;
 import it.alten.pokemonao.database.repository.TypeRepository;
-import it.alten.pokemonao.models.TypeModel;
+import it.alten.pokemonao.dtos.TypeDTO;
 import it.alten.pokemonao.services.api.ITypeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +16,8 @@ public class TypeService implements ITypeService {
     private final ModelMapper modelMapper;
 
     @Override
-    public TypeModel getById(Integer id) {
+    public TypeDTO getById(Integer id) {
         TypeEntity typeEntity = typeRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        return modelMapper.map(typeEntity, TypeModel.class);
+        return modelMapper.map(typeEntity, TypeDTO.class);
     }
 }

@@ -1,7 +1,7 @@
 package it.alten.pokemonao.services.api;
 
-import it.alten.pokemonao.models.TypeModel;
+import it.alten.pokemonao.dtos.TypeDTO;
 
 public interface ITypeService {
-    TypeModel getById(Integer id);
+    TypeDTO getById(Integer id);
 }

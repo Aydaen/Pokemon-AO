@@ -1,9 +1,9 @@
-package it.alten.pokemonao.models;
+package it.alten.pokemonao.dtos;
 
 import lombok.Data;
 
 @Data
-public class TypeModel {
+public class TypeDTO {
     private Integer id;
     private String name;
     private String icon;

@@ -2,7 +2,7 @@ package it.alten.pokemonao.services.impl;
 
 import it.alten.pokemonao.database.entity.PokemonEntity;
 import it.alten.pokemonao.database.repository.PokemonRepository;
-import it.alten.pokemonao.models.PokemonModel;
+import it.alten.pokemonao.dtos.PokemonDTO;
 import it.alten.pokemonao.services.api.IPokemonService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -17,16 +17,16 @@ public class PokemonService implements IPokemonService {
     private final ModelMapper modelMapper;
 
     @Override
-    public PokemonModel getById(Integer id) {
+    public PokemonDTO getById(Integer id) {
         PokemonEntity pokemonEntity = pokemonRepository.findById(id).orElse(null);
-        return modelMapper.map(pokemonEntity, PokemonModel.class);
+        return modelMapper.map(pokemonEntity, PokemonDTO.class);
     }
 
     @Override
-    public List<PokemonModel> getAll() {
+    public List<PokemonDTO> getAll() {
         return  pokemonRepository.findAll()
                 .stream()
-                .map(entity -> modelMapper.map(entity, PokemonModel.class))
+                .map(entity -> modelMapper.map(entity, PokemonDTO.class))
                 .toList();
     }
 }

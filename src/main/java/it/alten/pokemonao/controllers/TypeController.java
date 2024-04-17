@@ -1,6 +1,6 @@
 package it.alten.pokemonao.controllers;
 
-import it.alten.pokemonao.models.TypeModel;
+import it.alten.pokemonao.dtos.TypeDTO;
 import it.alten.pokemonao.services.api.ITypeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +19,9 @@ public class TypeController {
     private final ITypeService typeService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<TypeModel> getById(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<TypeDTO> getById(@PathVariable(name = "id") Integer id) {
         try {
-           TypeModel response = typeService.getById(id);
+           TypeDTO response = typeService.getById(id);
            return ResponseEntity.ok(response);
         }catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

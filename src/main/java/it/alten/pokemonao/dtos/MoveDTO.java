@@ -1,11 +1,11 @@
-package it.alten.pokemonao.models;
+package it.alten.pokemonao.dtos;
 
 import lombok.Data;
 
 @Data
-public class MoveModel {
+public class MoveDTO {
     private Integer id;
     private String name;
-    private TypeModel type;
+    private TypeDTO type;
     private int power;
 }
