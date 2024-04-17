@@ -14,8 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PokemonService implements IPokemonService {
     private final PokemonRepository pokemonRepository;
-    private ModelMapper modelMapper;
-
+    private final ModelMapper modelMapper;
 
     @Override
     public PokemonModel getById(Integer id) {
@@ -25,8 +24,7 @@ public class PokemonService implements IPokemonService {
 
     @Override
     public List<PokemonModel> getAll() {
-        List<PokemonEntity> pokemonEntityList = pokemonRepository.findAll();
-        return  pokemonEntityList
+        return  pokemonRepository.findAll()
                 .stream()
                 .map(entity -> modelMapper.map(entity, PokemonModel.class))
                 .toList();
