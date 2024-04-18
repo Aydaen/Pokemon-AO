@@ -28,6 +28,6 @@ public class TypeController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody TypeDTO request) {
         typeService.save(request);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 }
