@@ -15,7 +15,7 @@ public class TypeEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Integer id;
 
-    @Column(name = "name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
+    @Column(name = "name", length = Integer.MAX_VALUE)
     private String name;
 
     @Column(name = "icon_url", length = Integer.MAX_VALUE)
