@@ -9,6 +9,6 @@ import java.util.List;
 public interface IPokemonService {
     PokemonDTO getById(Integer id);
     List<PokemonDTO> getAll();
-    boolean deleteById(Integer id);
-    void post(PokemonDTO pokemonDTO);
+    void deleteById(Integer id);
+    void create(PokemonDTO pokemonDTO);
 }

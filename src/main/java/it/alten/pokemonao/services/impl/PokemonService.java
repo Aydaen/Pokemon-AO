@@ -4,6 +4,7 @@ import it.alten.pokemonao.database.entity.PokemonEntity;
 import it.alten.pokemonao.database.repository.PokemonRepository;
 import it.alten.pokemonao.dtos.PokemonDTO;
 import it.alten.pokemonao.services.api.IPokemonService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,19 @@ public class PokemonService implements IPokemonService {
                 .stream()
                 .map(entity -> modelMapper.map(entity, PokemonDTO.class))
                 .toList();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        if(!pokemonRepository.existsById(id)){
+            throw new EntityNotFoundException();
+        }
+        pokemonRepository.deleteById(id);
+    }
+
+    @Override
+    public void create(PokemonDTO pokemonDTO) {
+        PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO,PokemonEntity.class);
+        pokemonRepository.save(pokemonEntity);
     }
 }
