@@ -20,4 +20,9 @@ public class TypeService implements ITypeService {
         TypeEntity typeEntity = typeRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         return modelMapper.map(typeEntity, TypeDTO.class);
     }
+
+    @Override
+    public void save(TypeDTO typeDTO) {
+        typeRepository.save(modelMapper.map(typeDTO, TypeEntity.class));
+    }
 }
