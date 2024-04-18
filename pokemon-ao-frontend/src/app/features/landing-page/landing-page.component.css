@@ -1,0 +1,50 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+video {
+  z-index: -1;
+}
+
+.landing-page-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.logo {
+  max-width: 20%;
+}
+
+.card-container {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  row-gap: 50px;
+  column-gap: 50px;
+  width: 50%;
+}
+
+app-card {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}

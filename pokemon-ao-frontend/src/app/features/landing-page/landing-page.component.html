@@ -1,0 +1,27 @@
+<div>
+  <video autoplay loop src="assets/hilda-and-tepig-watching-castelia-city-pokemon-pixel-moewalls-com.mp4"></video>
+
+  <div class="landing-page-content">
+
+    <div class="logo-container">
+      <img class="logo" src="assets/logo_pokemon_ao.png" alt="logo img">
+    </div>
+
+    <div class="button-container">
+      <app-button buttonText="Start trading"></app-button>
+    </div>
+
+    <div class="container2">
+      <div class="card-container">
+        <app-card *ngFor="let p of pokemon"
+        [name]="p.name"
+        [moves]="p.moves"
+        [typeIcon]="getTypeIconPath(p.type)"
+        [sprite]="p.sprite"
+        [type]="p.type | lowercase"/>
+      </div>
+    </div>
+
+  </div>
+
+</div>
