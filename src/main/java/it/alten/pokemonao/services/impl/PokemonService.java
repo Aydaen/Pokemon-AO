@@ -30,4 +30,18 @@ public class PokemonService implements IPokemonService {
                 .map(entity -> modelMapper.map(entity, PokemonDTO.class))
                 .toList();
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        if(!pokemonRepository.existsById(id)){
+            throw new EntityNotFoundException();
+        }
+        pokemonRepository.deleteById(id);
+    }
+
+    @Override
+    public void create(PokemonDTO pokemonDTO) {
+        PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO,PokemonEntity.class);
+        pokemonRepository.save(pokemonEntity);
+    }
 }

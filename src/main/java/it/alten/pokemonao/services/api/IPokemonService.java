@@ -9,4 +9,6 @@ import java.util.List;
 public interface IPokemonService {
     PokemonDTO getById(Integer id);
     List<PokemonDTO> getAll();
+    void deleteById(Integer id);
+    void create(PokemonDTO pokemonDTO);
 }

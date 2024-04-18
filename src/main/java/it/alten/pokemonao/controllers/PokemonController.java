@@ -32,4 +32,20 @@ public class PokemonController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable(name = "id") Integer id){
+        try{
+            pokemonService.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (EntityNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> create(@RequestBody PokemonDTO pokemonDTO){
+        pokemonService.create(pokemonDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
 }

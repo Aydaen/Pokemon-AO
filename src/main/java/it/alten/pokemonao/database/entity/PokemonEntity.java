@@ -17,19 +17,19 @@ public class PokemonEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Integer id;
 
-    @Column(name = "name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
+    @Column(name = "name", length = Integer.MAX_VALUE)
     private String name;
 
     @Column(name = "image_url", length = Integer.MAX_VALUE)
     private String imageUrl;
 
-    @Column(name = "current_hp", nullable = false)
+    @Column(name = "current_hp")
     private Integer currentHp;
 
-    @Column(name = "max_hp", nullable = false)
+    @Column(name = "max_hp")
     private Integer maxHp;
 
-    @Column(name = "trainer_name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
+    @Column(name = "trainer_name", length = Integer.MAX_VALUE)
     private String trainerName;
 
     @ManyToOne
