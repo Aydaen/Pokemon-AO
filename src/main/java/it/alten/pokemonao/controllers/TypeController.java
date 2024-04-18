@@ -21,7 +21,7 @@ public class TypeController {
            TypeDTO response = typeService.getById(id);
            return ResponseEntity.ok(response);
         }catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.notFound().build();
         }
     }
 
