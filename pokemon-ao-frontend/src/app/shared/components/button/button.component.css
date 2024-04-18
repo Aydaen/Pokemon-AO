@@ -1,0 +1,30 @@
+button {
+  background-image:
+    linear-gradient(
+      to left,
+      #52085e,
+      #c738e0
+    );
+  border: 0;
+  border-radius: 50em;
+  box-shadow: 0 2px 10px #52085e;
+  color: #ffffff;
+  display: inline-block;
+  letter-spacing: .25em;
+  opacity: .80;
+  padding: 1em 1.5em 1em 1.75em;
+  text-transform: uppercase;
+  transition:
+    font-size 150ms ease-out,
+    opacity 150ms ease-out;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+button:active {
+  font-size: 2em;
+}
