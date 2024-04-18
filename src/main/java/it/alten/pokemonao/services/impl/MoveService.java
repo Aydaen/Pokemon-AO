@@ -25,6 +25,7 @@ public class MoveService implements IMoveService {
 
     @Override
     public void save(MoveDTO moveDTO) {
-        moveRepository.save(modelMapper.map(moveDTO, MoveEntity.class));
+        MoveEntity moveEntityToSave = modelMapper.map(moveDTO, MoveEntity.class);
+        moveRepository.save(moveEntityToSave);
     }
 }
