@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "type", schema = "pokemon_schema")
+@Table(name = "type")
 @Data
 public class TypeEntity {
     @Id

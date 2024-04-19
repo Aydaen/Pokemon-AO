@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "move", schema = "pokemon_schema")
+@Table(name = "move")
 @Data
 public class MoveEntity {
     @Id
