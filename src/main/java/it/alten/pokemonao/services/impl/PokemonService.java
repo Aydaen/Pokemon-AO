@@ -7,6 +7,8 @@ import it.alten.pokemonao.services.api.IPokemonService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,7 +43,11 @@ public class PokemonService implements IPokemonService {
 
     @Override
     public void create(PokemonDTO pokemonDTO) {
-        PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO,PokemonEntity.class);
-        pokemonRepository.save(pokemonEntity);
+        if(pokemonDTO.getCurrentHp() > pokemonDTO.getMaxHp()){
+            //TODO: create custom exception
+        }else{
+            PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO,PokemonEntity.class);
+            pokemonRepository.save(pokemonEntity);
+        }
     }
 }
