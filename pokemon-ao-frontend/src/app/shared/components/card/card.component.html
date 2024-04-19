@@ -1,13 +1,10 @@
 <div class="pokemon-card" [ngClass]="['-' + (type?.toLowerCase() ?? '')]">
   <div class="info">
     <p class="name">{{name}}</p>
-    <ul>
-      <li>{{moves[0]}}</li>
-      <li>{{moves[1]}}</li>
-      <li>{{moves[2]}}</li>
-      <li>{{moves[3]}}</li>
+    <ul class="move-container">
+      <li class="move-name" *ngFor="let move of moves">{{move.name}}</li>
     </ul>
-    <div class="types">
+    <div class="type">
       <img class="icon-logo" src="{{typeIcon}}" alt="icon logo">
     </div>
   </div>

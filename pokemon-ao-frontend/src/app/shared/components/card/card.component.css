@@ -1,6 +1,31 @@
-.title {
-  margin-top: 1em;
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+.name {
   text-align: center;
+  position: absolute;
+  bottom: 80px;
+  font-family: 'Pokemon Solid', sans-serif;
+  text-shadow: -1px 0 black, 0 4px black, 1px 0 black, 0 -1px black;
+  letter-spacing: 3px;
+}
+
+.move-container {
+  position: absolute;
+  left: -10px;
+  top: 25px;
+}
+
+.icon-logo {
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.move-name {
+  font-family: 'Pixelify Sans', sans-serif;
 }
 
 .pokemon-card {
@@ -17,36 +42,43 @@
   position: relative;
   width: 100%;
   transition: 0.4s ease-out;
+
   &:hover {
     transform: translateY(-20px);
     transition: 0.4s ease-out;
+
     ~ .card {
       position: relative;
       left: 50px;
       transition: 0.4s ease-out;
     }
   }
+
   & .number {
     color: #2d2222;
     font-size: .7em;
     font-weight: 700;
   }
+
   & .name {
     color: #ffffff;
     font-size: 1.275em;
     font-weight: 600;
     padding: .1em 0;
   }
+
   & .image {
     position: relative;
     max-width: 120px;
     top: -1.6em;
     right: -1.6em;
     z-index: 1;
+
     & img {
       width: 100%;
     }
   }
+
   &:after {
     content: '';
     background-image: url(https://icon-library.com/images/pokemon-desktop-icon/pokemon-desktop-icon-23.jpg);
@@ -60,42 +92,36 @@
     right: 0;
     top: .4em;
   }
+
   &.-water {
     background-color: #569ddb;
   }
+
   &.-dragon {
     background-color: #176bc3;
   }
+
   &.-fire {
     background-color: #f7a454;
   }
+
   &.-normal {
     background-color: #9fa19e;
   }
-}
 
-.type {
-  border-radius: .2em;
-  color: #ffffff;
-  display: inline-block;
-  font-size: .8em;
-  padding: .3em .6em;
-  margin-top: .3em;
   &.-bug {
-    background: #8BB22F;
+    background-color: #8BB22F;
   }
-  &.-poison {
-    background: #A552CC;
-  }
-  &.-eletric {
-    background: #EED533;
-  }
-  &.-fighting {
-    background: #D04164;
-  }
-}
 
-.icon-logo {
-  width: 30px;
-  height: 30px;
+  &.-poison {
+    background-color: #A552CC;
+  }
+
+  &.-eletric {
+    background-color: #EED533;
+  }
+
+  &.-fighting {
+    background-color: #D04164;
+  }
 }

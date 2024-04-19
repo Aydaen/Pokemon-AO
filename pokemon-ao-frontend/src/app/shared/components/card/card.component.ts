@@ -1,18 +1,20 @@
 import {Component, Input} from '@angular/core';
-import {NgClass} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
+import {MoveModel} from "../../models/move.model";
 
 @Component({
   selector: 'app-card',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    NgForOf
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
 export class CardComponent {
 @Input() name!:string;
-@Input() moves!:string[];
+@Input() moves!:MoveModel[];
 @Input() typeIcon!:string;
 @Input() sprite!:string;
 @Input() type!:string;
