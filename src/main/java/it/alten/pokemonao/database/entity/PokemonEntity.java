@@ -20,8 +20,8 @@ public class PokemonEntity {
     @Column(name = "name", length = Integer.MAX_VALUE)
     private String name;
 
-    @Column(name = "image_url", length = Integer.MAX_VALUE)
-    private String imageUrl;
+    @Column(name = "sprite", length = Integer.MAX_VALUE)
+    private String sprite;
 
     @Column(name = "current_hp")
     private Integer currentHp;
