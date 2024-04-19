@@ -124,4 +124,44 @@
   &.-fighting {
     background-color: #D04164;
   }
+
+  &.-dark {
+    background-color: #2f2d2d;
+  }
+
+  &.-fairy {
+    background-color: #EE99AC;
+  }
+
+  &.-flying {
+    background-color: #90f0f0;
+  }
+
+  &.-ghost {
+    background-color: #705898;
+  }
+
+  &.-ground {
+    background-color: #6b6248;
+  }
+
+  &.-ice {
+    background-color: #98D8D8;
+  }
+
+  &.-psychic {
+    background-color: #F85888;
+  }
+
+  &.-rock {
+    background-color: #B8A038;
+  }
+
+  &.-steel {
+    background-color: #B8B8D0;
+  }
+
+  &.-grass {
+    background-color: #78C850;
+  }
 }
