@@ -14,11 +14,11 @@
     <div class="container2">
       <div class="card-container">
         <app-card *ngFor="let p of pokemon"
-        [name]="p.name"
+        [name]="p.name | titlecase"
         [moves]="p.moves"
-        [typeIcon]="getTypeIconPath(p.type)"
+        [typeIcon]="getTypeIconPath(p.type.icon)"
         [sprite]="p.sprite"
-        [type]="p.type | lowercase"/>
+        [type]="p.type.name | lowercase"/>
       </div>
     </div>
 

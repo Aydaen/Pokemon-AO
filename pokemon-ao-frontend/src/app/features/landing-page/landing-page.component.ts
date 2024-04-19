@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ButtonComponent} from "../../shared/components/button/button.component";
-import {LowerCasePipe, NgForOf} from "@angular/common";
+import {LowerCasePipe, NgForOf, TitleCasePipe} from "@angular/common";
 import {CardComponent} from "../../shared/components/card/card.component";
+import {PokemonService} from "../../core/services/pokemon.service";
+import {PokemonModel} from "../../shared/models/pokemon.model";
 
 class Pokemon {
   name!:string;
@@ -17,50 +19,41 @@ class Pokemon {
     ButtonComponent,
     NgForOf,
     CardComponent,
-    LowerCasePipe
+    LowerCasePipe,
+    TitleCasePipe
   ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent {
-  pokemon: Pokemon[] = [
-    {
-      name: 'Squirtle',
-      moves: ['Tackle', 'Bubble', 'Water Gun', 'Withdraw'],
-      type: 'Water',
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/7.png'
-    },
-    {
-      name: 'Dragonite',
-      moves: ['Dragon Claw', 'Wing Attack', 'Thunder Punch', 'Fire Punch'],
-      type: 'Dragon',
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/149.png'
-    },
-    {
-      name: 'Charizard',
-      moves: ['Flamethrower', 'Fly', 'Dragon Rage', 'Slash'],
-      type: 'Fire',
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/6.png'
-    },
-    {
-      name: 'Empoleon',
-      moves: ['Hydro Pump', 'Ice Beam', 'Drill Peck', 'Flash Cannon'],
-      type: 'Water',
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/395.png'
-    },
-    {
-      name: 'Ditto',
-      moves: ['Transform'],
-      type: 'Normal',
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png'
-    },
-    {
-      name: 'Garchomp',
-      moves: ['Dragon Claw', 'Earthquake', 'Fire Fang', 'Slash'],
-      type: 'Dragon',
-      sprite: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/445.png'
+export class LandingPageComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.fetchPokemon();
+  }
+  constructor(private pokemonService: PokemonService) {
+  }
+
+  fetchPokemon() {
+    this.pokemonService.exchangePokemon().subscribe(data => {
+      const shuffledData = this.shuffleArray(data).slice(0, 6);
+      shuffledData.forEach(value => {
+        if (!this.pokemon.find(p => p.name === value.name)) {
+          this.pokemon.push(value);
+        }
+      });
+      console.log(this.pokemon);
+    });
+  }
+
+  shuffleArray(array: any[]): any[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
-  ];
+    return array;
+  }
+
+  pokemon: PokemonModel[] = []
 
   getTypeIconPath(type: string): string {
     return `assets/${type}Type.png`;
