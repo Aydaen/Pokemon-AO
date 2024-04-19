@@ -28,7 +28,7 @@ public class PokemonController {
             PokemonDTO response = pokemonService.getById(id);
             return ResponseEntity.ok(response);
         } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.notFound().build();
         }
     }
 
@@ -38,14 +38,18 @@ public class PokemonController {
             pokemonService.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (EntityNotFoundException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody PokemonDTO pokemonDTO){
-        pokemonService.create(pokemonDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        if(pokemonDTO.getCurrentHp() > pokemonDTO.getMaxHp()){
+            return ResponseEntity.badRequest().build();
+        }else{
+            pokemonService.create(pokemonDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
     }
 
 }
