@@ -12,22 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/type")
 public class TypeController {
-
     private final ITypeService typeService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<TypeDTO> getById(@PathVariable(name = "id") Integer id) {
-        try {
-           TypeDTO response = typeService.getById(id);
-           return ResponseEntity.ok(response);
-        }catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+    @PostMapping
+    public ResponseEntity<Void> create(@RequestBody TypeDTO typeDTO) {
+        typeService.create(typeDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping
-    public ResponseEntity<Void> create(@RequestBody TypeDTO request) {
-        typeService.save(request);
-        return ResponseEntity.ok().build();
+    @GetMapping("/{name}")
+    public ResponseEntity<TypeDTO> getByName(@PathVariable(name = "name") String name) {
+        TypeDTO typeDTO = typeService.getByName(name);
+        return ResponseEntity.status(HttpStatus.OK).body(typeDTO);
     }
 }
