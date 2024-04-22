@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 public class PokeApiCaller{
     private static final String PLACEHOLDER_ICON_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png";
 
-    public String getTypeSpriteByName(String typeName){
+    public String getTypeIconByName(String typeName){
         String url = "https://99tvpecyz4.execute-api.eu-west-3.amazonaws.com/v1/pokemon-type-images/" + typeName + "Type.png";
         RestTemplate restTemplate = new RestTemplate();
         try{
