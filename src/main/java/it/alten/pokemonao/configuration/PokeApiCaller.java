@@ -40,22 +40,43 @@ public class PokeApiCaller implements CommandLineRunner {
             return PLACEHOLDER_ICON_URL;
         }
     }
-    //Specie del pokemon (non dovrebbe servire)
-    public Integer getPokemonPokeApiId(Integer pokemonPokeApiId) throws JsonProcessingException {
+    //Specie del pokemon
+    public String getPokemonPokeApiId(Integer pokemonPokeApiId){
         String pokemonUrl = POKE_API_URL + "pokemon/" + pokemonPokeApiId;
-        return getJsonFromResponse(pokemonUrl).get("id").asInt();
+        try{
+            return getJsonFromResponse(pokemonUrl).get("name").asText();
+        } catch (ResourceAccessException ex){
+            return null;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //HP di base
-    public Integer getMaxHpPokeApiId(Integer pokemonPokeApiId) throws JsonProcessingException{
+    public Integer getMaxHpPokeApiId(Integer pokemonPokeApiId){
         String pokemonUrl = POKE_API_URL + "pokemon/" + pokemonPokeApiId;
-        return getJsonFromResponse(pokemonUrl).at("/stats/0/base_stat").asInt();
+        try{
+            return getJsonFromResponse(pokemonUrl).at("/stats/0/base_stat").asInt();
+        } catch (ResourceAccessException ex){
+            return null;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //Nome del tipo
-    public String getTypeNameByPokeApiId(Integer id) throws JsonProcessingException {
+    public String getTypeNameByPokeApiId(Integer id){
         String typeUrl = POKE_API_URL + "type/" + id;
-        return getJsonFromResponse(typeUrl).get("name").asText();
+        try{
+            return getJsonFromResponse(typeUrl).get("name").asText();
+        } catch (ResourceAccessException ex){
+            return null;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //Icona del tipo
@@ -64,23 +85,37 @@ public class PokeApiCaller implements CommandLineRunner {
     }
 
     //Nomi delle mosse
-    public List<String> getMovesNamePokeByApiId(List<Integer> moveIds) throws JsonProcessingException{
+    public List<String> getMovesNamePokeByApiId(List<Integer> moveIds){
         List<String> moveNames = new ArrayList<>();
         String moveUrl = POKE_API_URL + "move/";
         for(Integer moveId : moveIds){
-            JsonNode jsonFile = getJsonFromResponse(moveUrl + moveId);
-            moveNames.add(jsonFile.get("name").asText());
+            try{
+                JsonNode jsonFile = getJsonFromResponse(moveUrl + moveId);
+                moveNames.add(jsonFile.get("name").asText());
+            } catch (ResourceAccessException ex){
+                moveNames.add(null);
+            } catch (Exception e){
+                moveNames.add(null);
+                e.printStackTrace();
+            }
         }
         return moveNames;
     }
 
     //Potenza delle mosse
-    public List<Integer> getMovesPowerPokeByApiId(List<Integer> moveIds) throws JsonProcessingException{
+    public List<Integer> getMovesPowerPokeByApiId(List<Integer> moveIds){
         List<Integer> movePowers = new ArrayList<>();
         String moveUrl = POKE_API_URL + "move/";
         for(Integer moveId : moveIds){
-            JsonNode jsonFile = getJsonFromResponse(moveUrl + moveId);
-            movePowers.add(jsonFile.get("power").asInt());
+            try{
+                JsonNode jsonFile = getJsonFromResponse(moveUrl + moveId);
+                movePowers.add(jsonFile.get("power").asInt());
+            } catch (ResourceAccessException ex){
+                movePowers.add(null);
+            } catch (Exception e){
+                movePowers.add(null);
+                e.printStackTrace();
+            }
         }
         return movePowers;
     }
