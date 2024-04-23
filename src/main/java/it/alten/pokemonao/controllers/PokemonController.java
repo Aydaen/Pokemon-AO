@@ -34,12 +34,6 @@ public class PokemonController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-//    @GetMapping("/{name}")
-//    public ResponseEntity<PokemonDTO> getByName(@PathVariable(name = "name") String name) {
-//        PokemonDTO pokemonDTO = pokemonService.getByName(name);
-//        return ResponseEntity.status(HttpStatus.OK).body(pokemonDTO);
-//    }
-
     @GetMapping("/random")
     public ResponseEntity<PokemonDTO> getRandom() {
         return ResponseEntity.status(HttpStatus.OK).body(pokemonService.getRandomPokemon());

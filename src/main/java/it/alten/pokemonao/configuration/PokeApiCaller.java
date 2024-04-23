@@ -29,7 +29,6 @@ public class PokeApiCaller implements CommandLineRunner {
     private static final String AMAZON_S3_URL = "https://99tvpecyz4.execute-api.eu-west-3.amazonaws.com/v1/pokemon-type-images/";
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper;
-    private final ModelMapper modelMapper;
     private final MoveRepository moveRepository;
     private final TypeRepository typeRepository;
 

@@ -50,21 +50,10 @@ public class PokemonService implements IPokemonService {
         }
 
         pokemonDTO.setSprite(pokeApiCaller.getSpriteByApiId(pokemonDTO.getPokemonPokeApiId()));
+        pokemonDTO.setMaxHp(pokeApiCaller.getMaxHpPokeApiId(pokemonDTO.getPokemonPokeApiId()));
         PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO, PokemonEntity.class);
         pokemonRepository.save(pokemonEntity);
     }
-
-//    @Override
-//    public PokemonDTO getByName(String name) {
-//        if (pokemonRepository.findByName(name).isEmpty()) {
-//            throw PokemonAOException.builder()
-//                    .status(HttpStatus.NOT_FOUND)
-//                    .message("No type found with name " + name)
-//                    .build();
-//        }
-//        PokemonEntity pokemonEntity = pokemonRepository.findByName(name).get();
-//        return modelMapper.map(pokemonEntity, PokemonDTO.class);
-//    }
 
     @Override
     public PokemonDTO getRandomPokemon() {
