@@ -21,6 +21,9 @@ public class TypeEntity {
     @Column(name = "icon", length = Integer.MAX_VALUE)
     private String icon;
 
+    @Column(name = "type_api_id")
+    private Integer typeApiId;
+
     @OneToMany(mappedBy = "type")
     private List<MoveEntity> moves = new ArrayList<>();
 
