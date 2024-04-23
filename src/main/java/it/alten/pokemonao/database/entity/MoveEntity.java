@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "move", schema = "pokemon_schema")
+@Table(name = "move")
 @Data
 public class MoveEntity {
     @Id
@@ -17,11 +17,14 @@ public class MoveEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Integer id;
 
-    @Column(name = "name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
+    @Column(name = "name", length = Integer.MAX_VALUE)
     private String name;
 
-    @Column(name = "power", nullable = false)
+    @Column(name = "power")
     private Integer power;
+
+    @Column(name = "move_api_id")
+    private Integer moveApiId;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "pokemon", schema = "pokemon_schema")
+@Table(name = "pokemon")
 @Data
 public class PokemonEntity {
     @Id
@@ -17,20 +17,23 @@ public class PokemonEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Integer id;
 
-    @Column(name = "name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
-    private String name;
+    @Column(name = "nickname", length = Integer.MAX_VALUE)
+    private String nickname;
 
-    @Column(name = "image_url", length = Integer.MAX_VALUE)
-    private String imageUrl;
+    @Column(name = "sprite", length = Integer.MAX_VALUE)
+    private String sprite;
 
-    @Column(name = "current_hp", nullable = false)
+    @Column(name = "current_hp")
     private Integer currentHp;
 
-    @Column(name = "max_hp", nullable = false)
+    @Column(name = "max_hp")
     private Integer maxHp;
 
-    @Column(name = "trainer_name", length = Integer.MAX_VALUE, nullable = false, updatable = false)
+    @Column(name = "trainer_name", length = Integer.MAX_VALUE)
     private String trainerName;
+
+    @Column(name = "pokemon_api_id")
+    private Integer pokemonApiId;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)

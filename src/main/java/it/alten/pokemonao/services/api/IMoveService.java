@@ -1,7 +1,7 @@
 package it.alten.pokemonao.services.api;
 
-import it.alten.pokemonao.models.MoveModel;
+import it.alten.pokemonao.dtos.MoveDTO;
 
 public interface IMoveService {
-    MoveModel getById(Integer id);
+    void create(MoveDTO moveDTO);
 }

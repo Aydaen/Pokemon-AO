@@ -12,10 +12,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        default_schema: pokemon_schema
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: myuser
     password: secret
+service:
+  port: 8081

@@ -1,32 +1,66 @@
 package it.alten.pokemonao.services.impl;
 
+import it.alten.pokemonao.configuration.PokeApiCaller;
 import it.alten.pokemonao.database.entity.PokemonEntity;
 import it.alten.pokemonao.database.repository.PokemonRepository;
-import it.alten.pokemonao.models.PokemonModel;
+import it.alten.pokemonao.dtos.PokemonDTO;
+import it.alten.pokemonao.exceptions.PokemonAOException;
 import it.alten.pokemonao.services.api.IPokemonService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
 public class PokemonService implements IPokemonService {
     private final PokemonRepository pokemonRepository;
     private final ModelMapper modelMapper;
+    private final PokeApiCaller pokeApiCaller;
 
     @Override
-    public PokemonModel getById(Integer id) {
-        PokemonEntity pokemonEntity = pokemonRepository.findById(id).orElse(null);
-        return modelMapper.map(pokemonEntity, PokemonModel.class);
+    public List<PokemonDTO> getAll() {
+        return pokemonRepository.findAll()
+                .stream()
+                .map(entity -> modelMapper.map(entity, PokemonDTO.class))
+                .toList();
     }
 
     @Override
-    public List<PokemonModel> getAll() {
-        return  pokemonRepository.findAll()
-                .stream()
-                .map(entity -> modelMapper.map(entity, PokemonModel.class))
-                .toList();
+    public void deleteById(Integer id) {
+        if (pokemonRepository.findById(id).isEmpty()) {
+            throw PokemonAOException.builder()
+                    .status(HttpStatus.NOT_FOUND)
+                    .message("ERROR: No Pokémon found with id " + id)
+                    .build();
+        }
+        pokemonRepository.deleteById(id);
+    }
+
+    @Override
+    public void create(PokemonDTO pokemonDTO) {
+        if (pokemonDTO.getCurrentHp() > pokemonDTO.getMaxHp()) {
+            throw PokemonAOException.builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .message("ERROR: currentHp value cannot be higher than maxHp value")
+                    .build();
+        }
+
+        pokemonDTO.setSprite(pokeApiCaller.getSpriteByApiId(pokemonDTO.getPokemonPokeApiId()));
+        pokemonDTO.setMaxHp(pokeApiCaller.getMaxHpPokeApiId(pokemonDTO.getPokemonPokeApiId()));
+        PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO, PokemonEntity.class);
+        pokemonRepository.save(pokemonEntity);
+    }
+
+    @Override
+    public PokemonDTO getRandomPokemon() {
+        List<PokemonEntity> pokemonEntityList = pokemonRepository.findAll();
+        Random random = new Random();
+        int randomIndex = random.nextInt(5);
+        PokemonEntity randomPokemon = pokemonEntityList.get(randomIndex);
+        return modelMapper.map(randomPokemon, PokemonDTO.class);
     }
 }
