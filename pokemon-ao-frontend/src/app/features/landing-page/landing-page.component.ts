@@ -37,7 +37,7 @@ export class LandingPageComponent implements OnInit {
     this.pokemonService.exchangePokemon().subscribe(data => {
       const shuffledData = this.shuffleArray(data).slice(0, 6);
       shuffledData.forEach(value => {
-        if (!this.pokemon.find(p => p.name === value.name)) {
+        if (!this.pokemon.find(p => p.nickname === value.name)) {
           this.pokemon.push(value);
         }
       });
@@ -56,6 +56,6 @@ export class LandingPageComponent implements OnInit {
   pokemon: PokemonModel[] = []
 
   getTypeIconPath(type: string): string {
-    return `assets/${type}Type.png`;
+    return `${type}`;
   }
 }
