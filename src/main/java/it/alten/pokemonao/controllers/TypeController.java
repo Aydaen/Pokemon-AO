@@ -19,10 +19,4 @@ public class TypeController {
         typeService.create(typeDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
-    @GetMapping("/{name}")
-    public ResponseEntity<TypeDTO> getByName(@PathVariable(name = "name") String name) {
-        TypeDTO typeDTO = typeService.getByName(name);
-        return ResponseEntity.status(HttpStatus.OK).body(typeDTO);
-    }
 }

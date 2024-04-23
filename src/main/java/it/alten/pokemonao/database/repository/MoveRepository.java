@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface MoveRepository extends JpaRepository<MoveEntity,Integer> {
-    Optional<MoveEntity> findByName(String name);
+
 }

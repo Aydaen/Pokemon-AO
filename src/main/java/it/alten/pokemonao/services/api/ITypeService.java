@@ -4,5 +4,4 @@ import it.alten.pokemonao.dtos.TypeDTO;
 
 public interface ITypeService {
     void create(TypeDTO typeDTO);
-    TypeDTO getByName(String name);
 }

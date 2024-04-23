@@ -19,26 +19,6 @@ public class TypeService implements ITypeService {
 
     @Override
     public void create(TypeDTO typeDTO) {
-//        boolean isTypeAlreadyPresent = typeRepository.findAll().stream()
-//                .map(TypeEntity::getName)
-//                .anyMatch(repoTypeName -> repoTypeName.equalsIgnoreCase(typeDTO.getName()));
-
-//        if (isTypeAlreadyPresent) {
-//            return;
-//        }
-
         typeRepository.save(modelMapper.map(typeDTO, TypeEntity.class));
-    }
-
-    @Override
-    public TypeDTO getByName(String name) {
-        if (typeRepository.findByName(name).isEmpty()) {
-            throw PokemonAOException.builder()
-                    .status(HttpStatus.NOT_FOUND)
-                    .message("No type found with name " + name)
-                    .build();
-        }
-        TypeEntity typeEntity = typeRepository.findByName(name).get();
-        return modelMapper.map(typeEntity, TypeDTO.class);
     }
 }

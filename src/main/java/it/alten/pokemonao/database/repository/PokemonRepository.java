@@ -8,5 +8,4 @@ import java.util.Optional;
 
 @Repository
 public interface PokemonRepository extends JpaRepository<PokemonEntity,Integer> {
-    //Optional<PokemonEntity> findByName(String name);
 }

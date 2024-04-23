@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class PokemonDTO {
-    private Integer id;
     private Integer pokemonPokeApiId;
     private String nickname;
     private String sprite;

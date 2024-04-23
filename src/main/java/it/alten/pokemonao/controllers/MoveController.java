@@ -18,10 +18,4 @@ public class MoveController {
         moveService.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
-    @GetMapping("/{name}")
-    public ResponseEntity<MoveDTO> getByName(@PathVariable(name = "name") String name) {
-        MoveDTO moveDTO = moveService.getByName(name);
-        return ResponseEntity.status(HttpStatus.OK).body(moveDTO);
-    }
 }
