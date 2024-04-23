@@ -2,13 +2,16 @@ package it.alten.pokemonao.database.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "type")
-@Data
+@Getter
+@Setter
 public class TypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +25,7 @@ public class TypeEntity {
     private String icon;
 
     @Column(name = "type_api_id")
-    private Integer typeApiId;
+    private Integer typePokeApiId;
 
     @OneToMany(mappedBy = "type")
     private List<MoveEntity> moves = new ArrayList<>();

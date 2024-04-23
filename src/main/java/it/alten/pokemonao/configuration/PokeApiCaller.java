@@ -50,7 +50,7 @@ public class PokeApiCaller implements CommandLineRunner {
             JsonNode root = objectMapper.readTree(data);
 
             int idAPI = root.at("/id").asInt();
-            typeEntity.setTypeApiId(idAPI);
+            typeEntity.setTypePokeApiId(idAPI);
 
             String nameAPI = root.at("/name").asText();
             typeEntity.setName(nameAPI);
@@ -204,7 +204,7 @@ public class PokeApiCaller implements CommandLineRunner {
                 moveEntity.setName(name);
                 moveEntity.setPower(power);
                 moveEntity.setType(typeEntity);
-                moveEntity.setMoveApiId(moveApiId); // Set move API ID
+                moveEntity.setMovePokeApiId(moveApiId); // Set move API ID
 
                 moveRepository.save(moveEntity);
 

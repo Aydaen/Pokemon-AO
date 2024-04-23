@@ -2,6 +2,8 @@ package it.alten.pokemonao.database.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,7 +12,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "pokemon")
-@Data
+@Getter
+@Setter
 public class PokemonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +36,7 @@ public class PokemonEntity {
     private String trainerName;
 
     @Column(name = "pokemon_api_id")
-    private Integer pokemonApiId;
+    private Integer pokemonPokeApiId;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
