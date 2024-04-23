@@ -49,7 +49,7 @@ public class PokemonService implements IPokemonService {
                     .build();
         }
 
-        pokemonDTO.setSprite(pokeApiCaller.getSpriteByName(pokemonDTO.getName().toLowerCase()));
+        pokemonDTO.setSprite(pokeApiCaller.getSpriteByApiId(pokemonDTO.getPokemonPokeApiId()));
         PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO, PokemonEntity.class);
         pokemonRepository.save(pokemonEntity);
     }
