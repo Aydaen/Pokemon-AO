@@ -5,7 +5,8 @@ import lombok.Data;
 @Data
 public class PokemonDTO {
     private Integer id;
-    private String name;
+    private Integer pokemonPokeApiId;
+    private String nickname;
     private String sprite;
     private int currentHp;
     private int maxHp;
