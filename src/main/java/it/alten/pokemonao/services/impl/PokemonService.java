@@ -54,17 +54,17 @@ public class PokemonService implements IPokemonService {
         pokemonRepository.save(pokemonEntity);
     }
 
-    @Override
-    public PokemonDTO getByName(String name) {
-        if (pokemonRepository.findByName(name).isEmpty()) {
-            throw PokemonAOException.builder()
-                    .status(HttpStatus.NOT_FOUND)
-                    .message("No type found with name " + name)
-                    .build();
-        }
-        PokemonEntity pokemonEntity = pokemonRepository.findByName(name).get();
-        return modelMapper.map(pokemonEntity, PokemonDTO.class);
-    }
+//    @Override
+//    public PokemonDTO getByName(String name) {
+//        if (pokemonRepository.findByName(name).isEmpty()) {
+//            throw PokemonAOException.builder()
+//                    .status(HttpStatus.NOT_FOUND)
+//                    .message("No type found with name " + name)
+//                    .build();
+//        }
+//        PokemonEntity pokemonEntity = pokemonRepository.findByName(name).get();
+//        return modelMapper.map(pokemonEntity, PokemonDTO.class);
+//    }
 
     @Override
     public PokemonDTO getRandomPokemon() {

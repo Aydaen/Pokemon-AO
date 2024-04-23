@@ -3,6 +3,8 @@ package it.alten.pokemonao.configuration;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import it.alten.pokemonao.database.entity.TypeEntity;
+import it.alten.pokemonao.database.repository.TypeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,12 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class PokeApiCaller implements CommandLineRunner {
+
+    private final TypeRepository typeRepository;
     private static final String PLACEHOLDER_ICON_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png";
     private static final String POKE_API_URL = "https://pokeapi.co/api/v2/";
+
+    private static final String TYPE_POKE_API_URL = "type/";
     private static final String AMAZON_S3_URL = "https://99tvpecyz4.execute-api.eu-west-3.amazonaws.com/v1/pokemon-type-images/";
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper;
@@ -25,8 +31,33 @@ public class PokeApiCaller implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(getMovesPowerPokeByApiId(List.of(1,2,3)));
+        fetchTypeFromPokeAPI();
     }
+
+    private void fetchTypeFromPokeAPI() throws JsonProcessingException {
+        for (int i = 1; i <= 18; i++) {
+            TypeEntity typeEntity = new TypeEntity();
+            String typeUrl = POKE_API_URL + TYPE_POKE_API_URL + i;
+            String data = restTemplate.getForEntity(typeUrl, String.class).getBody();
+
+            typeEntity.setId(i);
+
+            JsonNode root = objectMapper.readTree(data);
+
+            int idAPI = root.at("/id").asInt();
+            typeEntity.setTypeApiId(idAPI);
+
+            String nameAPI = root.at("/name").asText();
+            typeEntity.setName(nameAPI);
+
+            String iconS3 = getTypeIconByTypeName(nameAPI);
+            typeEntity.setIcon(iconS3);
+
+            typeRepository.save(typeEntity);
+        }
+    }
+
+
 
     //Immagine del pokemon
     public String getSpriteByApiId(Integer pokemonPokeApiId){

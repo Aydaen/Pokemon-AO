@@ -8,6 +8,6 @@ public interface IPokemonService {
     List<PokemonDTO> getAll();
     void deleteById(Integer id);
     void create(PokemonDTO pokemonDTO);
-    PokemonDTO getByName(String name);
+    //PokemonDTO getByName(String name);
     PokemonDTO getRandomPokemon();
 }
