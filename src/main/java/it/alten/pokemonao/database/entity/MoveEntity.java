@@ -23,6 +23,9 @@ public class MoveEntity {
     @Column(name = "power")
     private Integer power;
 
+    @Column(name = "move_api_id")
+    private Integer moveApiId;
+
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "type_id")

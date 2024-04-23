@@ -17,8 +17,8 @@ public class PokemonEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Integer id;
 
-    @Column(name = "name", length = Integer.MAX_VALUE)
-    private String name;
+    @Column(name = "nickname", length = Integer.MAX_VALUE)
+    private String nickname;
 
     @Column(name = "sprite", length = Integer.MAX_VALUE)
     private String sprite;
@@ -31,6 +31,9 @@ public class PokemonEntity {
 
     @Column(name = "trainer_name", length = Integer.MAX_VALUE)
     private String trainerName;
+
+    @Column(name = "pokemon_api_id")
+    private Integer pokemonApiId;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
