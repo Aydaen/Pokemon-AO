@@ -30,6 +30,4 @@ public class MoveEntity {
 
     @ManyToMany(mappedBy = "moves")
     private List<PokemonEntity> pokemon = new ArrayList<>();
-
-
 }

@@ -4,7 +4,6 @@ import it.alten.pokemonao.dtos.TypeDTO;
 import it.alten.pokemonao.services.api.ITypeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

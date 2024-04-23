@@ -17,7 +17,7 @@ public class PokemonController {
     private final PokemonService pokemonService;
 
     @GetMapping
-    public ResponseEntity<List<PokemonDTO>> getAll(){
+    public ResponseEntity<List<PokemonDTO>> getAll() {
         List<PokemonDTO> pokemonList = pokemonService.getAll();
         return ResponseEntity.ok(pokemonList);
     }
@@ -33,20 +33,20 @@ public class PokemonController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable(name = "id") Integer id){
-        try{
+    public ResponseEntity<Void> deleteById(@PathVariable(name = "id") Integer id) {
+        try {
             pokemonService.deleteById(id);
             return ResponseEntity.ok().build();
-        } catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody PokemonDTO pokemonDTO){
-        if(pokemonDTO.getCurrentHp() > pokemonDTO.getMaxHp()){
+    public ResponseEntity<Void> create(@RequestBody PokemonDTO pokemonDTO) {
+        if (pokemonDTO.getCurrentHp() > pokemonDTO.getMaxHp()) {
             return ResponseEntity.badRequest().build();
-        }else{
+        } else {
             pokemonService.create(pokemonDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }

@@ -2,6 +2,8 @@ package it.alten.pokemonao.dtos;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class PokemonDTO {
     private Integer id;
@@ -10,6 +12,6 @@ public class PokemonDTO {
     private int currentHp;
     private int maxHp;
     private TypeDTO type;
-    private MoveDTO[] moves;
+    private List<MoveDTO> moves;
     private String trainerName;
 }

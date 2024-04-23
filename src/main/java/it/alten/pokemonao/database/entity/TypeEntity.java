@@ -18,8 +18,8 @@ public class TypeEntity {
     @Column(name = "name", length = Integer.MAX_VALUE)
     private String name;
 
-    @Column(name = "icon_url", length = Integer.MAX_VALUE)
-    private String iconUrl;
+    @Column(name = "icon", length = Integer.MAX_VALUE)
+    private String icon;
 
     @OneToMany(mappedBy = "type")
     private List<MoveEntity> moves = new ArrayList<>();
