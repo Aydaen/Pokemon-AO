@@ -1,7 +1,6 @@
 package it.alten.pokemonao.controllers;
 
 import it.alten.pokemonao.dtos.PokemonDTO;
-import it.alten.pokemonao.dtos.TypeDTO;
 import it.alten.pokemonao.services.impl.PokemonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
