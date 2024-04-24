@@ -10,6 +10,6 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   getAllPokemon() {
-    return this.http.get<PokemonModel[]>('http://localhost:8080/pokemon');
+    return this.http.get<PokemonModel[]>('http://localhost:8081/pokemon');
   }
 }

@@ -2,7 +2,7 @@ spring:
   main:
     banner-mode: off
   application:
-        name: pokemonao
+    name: pokemonao
 
   jpa:
     hibernate:
@@ -18,5 +18,28 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: myuser
     password: secret
-service:
+server:
   port: 8081
+
+pokemon-fallback:
+  pokemonPokeApiId: 1945
+  nickname: "Gren"
+  sprite: "https://pokemon-type-images.s3.eu-west-3.amazonaws.com/fallbackmon.png"
+  currentHp: 80
+  maxHp: 100
+  type:
+    typePokeApiId: 1
+    name: "Dog"
+    icon: "https://pokemon-type-images.s3.eu-west-3.amazonaws.com/fallbackmon.png"
+  moves:
+    - movePokeApiId: 1
+      name: "Pee"
+      power: 90
+      type:
+        typePokeApiId: 1
+        name: "Dog"
+        icon: "https://example.com/electric-type-icon.png"
+  trainerName: "Ash Ketchum"
+
+
+

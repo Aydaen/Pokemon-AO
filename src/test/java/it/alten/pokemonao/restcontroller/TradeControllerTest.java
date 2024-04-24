@@ -53,14 +53,14 @@ class TradeControllerTest {
         mapper = new ModelMapper();
 
         pokemonToTradeDTO = new PokemonDTO();
-        pokemonToTradeDTO.setId(1);
-        pokemonToTradeDTO.setName("charizard");
+        pokemonToTradeDTO.setPokemonPokeApiId(1);
+        pokemonToTradeDTO.setNickname("charizard");
         pokemonToTradeDTO.setSprite(null);
         pokemonToTradeDTO.setCurrentHp(100);
         pokemonToTradeDTO.setMaxHp(200);
 
         TypeDTO typeDTO = new TypeDTO();
-        typeDTO.setId(1);
+        typeDTO.setTypePokeApiId(1);
         typeDTO.setName("fuoco");
         typeDTO.setIcon("fs");
 
@@ -78,8 +78,8 @@ class TradeControllerTest {
         pokemonToTradeDTO.setTrainerName("geppetto");
 
         receivedPokemonDTO = new PokemonDTO();
-        receivedPokemonDTO.setId(1);
-        receivedPokemonDTO.setName("pikachu");
+        receivedPokemonDTO.setPokemonPokeApiId(1);
+        receivedPokemonDTO.setNickname("pikachu");
         receivedPokemonDTO.setSprite(null);
         receivedPokemonDTO.setCurrentHp(80);
         receivedPokemonDTO.setMaxHp(120);

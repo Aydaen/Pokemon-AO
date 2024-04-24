@@ -10,7 +10,7 @@ public class TypeMapper {
         }
 
         TypeEntity typeEntity = new TypeEntity();
-        typeEntity.setId(typeDTO.getId());
+        typeEntity.setTypePokeApiId(typeDTO.getTypePokeApiId());
         typeEntity.setName(typeDTO.getName());
         typeEntity.setIcon(typeDTO.getIcon());
 

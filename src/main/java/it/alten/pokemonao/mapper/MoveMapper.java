@@ -11,7 +11,7 @@ public class MoveMapper {
         }
 
         MoveEntity moveEntity = new MoveEntity();
-        moveEntity.setId(moveDTO.getId());
+        moveEntity.setMovePokeApiId(moveDTO.getMovePokeApiId());
         moveEntity.setName(moveDTO.getName());
         moveEntity.setPower(moveDTO.getPower());
 
