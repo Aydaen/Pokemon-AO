@@ -32,7 +32,7 @@ public class TradeController {
 
 
     @PostMapping
-    public void gigio(@RequestBody PokemonDTO pokemonDTO) {
+    public void launchTrade(@RequestBody PokemonDTO pokemonDTO) {
         logger.info("PokemonDTO before mapping: {}", pokemonDTO);
 
 
@@ -43,7 +43,6 @@ public class TradeController {
 
         PokemonEntity pokemonEntityTraded = PokemonMapper.mapToEntity(pokemonDTO);
 
-        logger.info("PokemonEntity after mapping: {}", pokemonEntityTraded);
 
 
         if (pokemonEntityTraded == null) {

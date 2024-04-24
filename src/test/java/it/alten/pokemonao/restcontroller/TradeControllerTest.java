@@ -52,7 +52,6 @@ class TradeControllerTest {
         MockitoAnnotations.openMocks(this);
         mapper = new ModelMapper();
 
-        // Crea un mock del PokemonDTO da inviare
         pokemonToTradeDTO = new PokemonDTO();
         pokemonToTradeDTO.setId(1);
         pokemonToTradeDTO.setName("charizard");
@@ -78,7 +77,6 @@ class TradeControllerTest {
         pokemonToTradeDTO.setMoves(moveDTOS);
         pokemonToTradeDTO.setTrainerName("geppetto");
 
-        // Crea un mock del PokemonDTO da ricevere
         receivedPokemonDTO = new PokemonDTO();
         receivedPokemonDTO.setId(1);
         receivedPokemonDTO.setName("pikachu");
@@ -98,17 +96,14 @@ class TradeControllerTest {
 
     @Test
     void testInitiateTradeRequest() {
-        // Simula la risposta di "Pokémon DAJE"
         ResponseEntity<PokemonDTO> response = new ResponseEntity<>(receivedPokemonDTO, HttpStatus.OK);
 
-        // Configura il mock di RestTemplate per restituire la risposta simulata
         when(restTemplate.postForEntity(any(String.class), any(PokemonDTO.class), any(Class.class)))
                 .thenReturn(response);
 
-        // Chiama il metodo da testare
-        tradeController.gigio(pokemonToTradeDTO);
 
-        // Verifica che il database sia stato aggiornato correttamente
+        tradeController.launchTrade(pokemonToTradeDTO);
+
         PokemonEntity pokemonEntityTraded = mapper.map(pokemonToTradeDTO, PokemonEntity.class);
         verify(pokemonRepository).delete(pokemonEntityTraded);
 
