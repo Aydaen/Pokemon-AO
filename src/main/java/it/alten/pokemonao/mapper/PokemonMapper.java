@@ -12,8 +12,8 @@ public class PokemonMapper {
         }
 
         PokemonEntity pokemonEntity = new PokemonEntity();
-        pokemonEntity.setId(pokemonDTO.getId());
-        pokemonEntity.setName(pokemonDTO.getName());
+        pokemonEntity.setPokemonPokeApiId(pokemonDTO.getPokemonPokeApiId());
+        pokemonEntity.setNickname(pokemonDTO.getNickname());
         pokemonEntity.setSprite(pokemonDTO.getSprite());
         pokemonEntity.setCurrentHp(pokemonDTO.getCurrentHp());
         pokemonEntity.setMaxHp(pokemonDTO.getMaxHp());

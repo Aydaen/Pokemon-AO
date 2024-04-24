@@ -67,7 +67,7 @@ class TradeControllerTest {
         pokemonToTradeDTO.setType(typeDTO);
 
         MoveDTO moveDTO = new MoveDTO();
-        moveDTO.setId(1);
+        moveDTO.setMovePokeApiId(1);
         moveDTO.setName("fuocobomba");
         moveDTO.setType(typeDTO);
         moveDTO.setPower(90);
@@ -85,7 +85,7 @@ class TradeControllerTest {
         receivedPokemonDTO.setMaxHp(120);
 
         TypeDTO receivedTypeDTO = new TypeDTO();
-        receivedTypeDTO.setId(1);
+        receivedTypeDTO.setTypePokeApiId(1);
         receivedTypeDTO.setName("elettricità");
         receivedTypeDTO.setIcon("gfdgtr");
         receivedPokemonDTO.setMoves(moveDTOS);
