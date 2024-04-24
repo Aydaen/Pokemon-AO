@@ -110,14 +110,14 @@
   }
 
   &.-bug {
-    background-color: #8BB22F;
+    background-color: #92ba3a;
   }
 
   &.-poison {
-    background-color: #A552CC;
+    background-color: #b566cb;
   }
 
-  &.-eletric {
+  &.-electric {
     background-color: #EED533;
   }
 
@@ -126,42 +126,42 @@
   }
 
   &.-dark {
-    background-color: #2f2d2d;
+    background-color: #585660;
   }
 
   &.-fairy {
-    background-color: #EE99AC;
+    background-color: #eb92e2;
   }
 
   &.-flying {
-    background-color: #90f0f0;
+    background-color: #a1bbe8;
   }
 
   &.-ghost {
-    background-color: #705898;
+    background-color: #5f6eb9;
   }
 
   &.-ground {
-    background-color: #6b6248;
+    background-color: #d67b51;
   }
 
   &.-ice {
-    background-color: #98D8D8;
+    background-color: #78cebf;
   }
 
   &.-psychic {
-    background-color: #F85888;
+    background-color: #f68583;
   }
 
   &.-rock {
-    background-color: #B8A038;
+    background-color: #c7ba8c;
   }
 
   &.-steel {
-    background-color: #B8B8D0;
+    background-color: #5894a1;
   }
 
   &.-grass {
-    background-color: #78C850;
+    background-color: #62bb5c;
   }
 }

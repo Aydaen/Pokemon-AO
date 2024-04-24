@@ -9,7 +9,7 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  exchangePokemon() {
+  getAllPokemon() {
     return this.http.get<PokemonModel[]>('http://localhost:8080/pokemon');
   }
 }

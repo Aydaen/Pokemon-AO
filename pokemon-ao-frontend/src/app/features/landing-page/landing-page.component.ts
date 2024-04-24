@@ -5,13 +5,6 @@ import {CardComponent} from "../../shared/components/card/card.component";
 import {PokemonService} from "../../core/services/pokemon.service";
 import {PokemonModel} from "../../shared/models/pokemon.model";
 
-class Pokemon {
-  name!:string;
-  moves!:string[];
-  type!: string;
-  sprite!:string;
-}
-
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -30,32 +23,19 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPokemon();
   }
+
   constructor(private pokemonService: PokemonService) {
   }
 
   fetchPokemon() {
-    this.pokemonService.exchangePokemon().subscribe(data => {
-      const shuffledData = this.shuffleArray(data).slice(0, 6);
-      shuffledData.forEach(value => {
-        if (!this.pokemon.find(p => p.nickname === value.name)) {
-          this.pokemon.push(value);
-        }
+    this.pokemonService.getAllPokemon().subscribe(data => {
+      const firstSixPokemon = data.slice(0, 6);
+      firstSixPokemon.forEach(value => {
+        this.pokemon.push(value);
       });
-      console.log(this.pokemon);
     });
   }
 
-  shuffleArray(array: any[]): any[] {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
 
   pokemon: PokemonModel[] = []
-
-  getTypeIconPath(type: string): string {
-    return `${type}`;
-  }
 }

@@ -16,7 +16,7 @@
         <app-card *ngFor="let p of pokemon"
         [name]="p.nickname | titlecase"
         [moves]="p.moves"
-        [typeIcon]="getTypeIconPath(p.type.icon)"
+        [typeIcon]="p.type.icon"
         [sprite]="p.sprite"
         [type]="p.type.name | lowercase"/>
       </div>

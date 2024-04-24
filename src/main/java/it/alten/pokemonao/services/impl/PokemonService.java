@@ -42,15 +42,14 @@ public class PokemonService implements IPokemonService {
 
     @Override
     public void create(PokemonDTO pokemonDTO) {
+        pokemonDTO.setSprite(pokeApiCaller.getSpriteByApiId(pokemonDTO.getPokemonPokeApiId()));
+        pokemonDTO.setMaxHp(pokeApiCaller.getMaxHpPokeApiId(pokemonDTO.getPokemonPokeApiId()));
         if (pokemonDTO.getCurrentHp() > pokemonDTO.getMaxHp()) {
             throw PokemonAOException.builder()
                     .status(HttpStatus.BAD_REQUEST)
                     .message("ERROR: currentHp value cannot be higher than maxHp value")
                     .build();
         }
-
-        pokemonDTO.setSprite(pokeApiCaller.getSpriteByApiId(pokemonDTO.getPokemonPokeApiId()));
-        pokemonDTO.setMaxHp(pokeApiCaller.getMaxHpPokeApiId(pokemonDTO.getPokemonPokeApiId()));
         PokemonEntity pokemonEntity = modelMapper.map(pokemonDTO, PokemonEntity.class);
         pokemonRepository.save(pokemonEntity);
     }

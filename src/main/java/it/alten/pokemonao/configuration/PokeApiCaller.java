@@ -26,7 +26,7 @@ public class PokeApiCaller implements CommandLineRunner {
     private static final String POKE_API_URL = "https://pokeapi.co/api/v2/";
 
     private static final String TYPE_POKE_API_URL = "type/";
-    private static final String AMAZON_S3_URL = "https://99tvpecyz4.execute-api.eu-west-3.amazonaws.com/v1/pokemon-type-images/";
+    private static final String AMAZON_S3_URL = "https://pokemon-type-images.s3.eu-west-3.amazonaws.com/";
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper;
     private final MoveRepository moveRepository;
